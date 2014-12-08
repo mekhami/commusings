@@ -4,10 +4,14 @@
 
 {% block content %}
 <h2>Articles</h2>
+{% if articles %}
     {% for article in articles %}
         <p><h3>{{ article.title }}</h3></p>
         <p><h4>{{ article.pub_date }}</h4></p>
         <p><h5>{{ article.content }}</h5></p>
         <br/>
     {% endfor %}
+{% else %}
+No Articles to Display
+{% endif %}
 {% endblock %}
