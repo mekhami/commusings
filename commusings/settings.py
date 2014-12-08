@@ -59,8 +59,12 @@ WSGI_APPLICATION = 'commusings.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dtjphhnkt98s6',
+        'HOST': 'ec2-107-20-245-187.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'hunnntcaccepxc',
+        'PASSWORD': 'J4fr6z3MRgFUCpQoShK3sRXOcG',
     }
 }
 
@@ -82,3 +86,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
