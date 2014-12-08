@@ -4,6 +4,7 @@
 
 {% block content %}
 <h2>Articles</h2>
+{{ value|linebreaks }}
 {% if articles %}
     {% for article in articles %}
         <p><h3>{{ article.title }}</h3></p>
