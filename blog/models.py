@@ -1,5 +1,4 @@
 from django.db import models
-from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Article(models.Model):
@@ -18,6 +17,9 @@ class Category(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    user = models.EmailField()
+    user = models.CharField(max_length=56)
     subject = models.CharField(max_length=128)
     article = models.ForeignKey(Article)
+
+    def __str__(self):
+        return self.user + ' ' + self.subject
