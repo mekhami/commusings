@@ -8,7 +8,7 @@
     {% for article in articles %}
         <p><h3>{{ article.title }}</h3></p>
         <p><h4>{{ article.pub_date }}</h4></p>
-        <p>{{ article.content|linebreaks }}</p>
+        <p>{{ article.teaser|linebreaks }}</p>
         <br/>
     {% endfor %}
 {% else %}
