@@ -4,5 +4,5 @@ from .views import IndexView, ArticleView
 
 urlpatterns = patterns('',
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^(?P<slug>[-_\w]+)/$', ArticleView.as_view(), name='article-view'),
+    url(r'^blog/article/(?P<slug>[\w\-]+)/$', ArticleView.as_view(), name='article-view'),
 )
