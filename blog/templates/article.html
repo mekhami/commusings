@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block title %} Commusings - {{ article.title }} {% endblock %}
-
+{% block subheader %} {{ article.title }} {% endblock %}
 {% block content %}
 
-    <p><h3>{{ article.title }}</h3></p>
     <p><h4>{{ article.pub_date }}</h4></p>
     <p>{{ article.content|linebreaks }}</p>
     <br/>
