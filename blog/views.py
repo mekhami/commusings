@@ -7,6 +7,7 @@ class IndexView(ListView):
     template_name = 'index.html'
     model = Article
     context_object_name = 'articles'
+    queryset = Article.objects.order_by("-pub_date")
 
 class ArticleView(DetailView):
     template_name = 'article.html'
