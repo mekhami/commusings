@@ -23,7 +23,7 @@ class ArticleDisplay(DetailView):
 
 class CreateCommentView(CreateView):
 
-    def dispatch(request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         self.article = get_object_or_404(Article, slug=kwargs['slug'])
         return super(CreateCommentView, self).dispatch(request, *args, **kwargs)
 
