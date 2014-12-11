@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, View, FormView, CreateView
 from blog.models import Article, Comment
 from blog.forms import CommentForm
 from django.core.urlresolvers import reverse
-from django.views.generic.detail import SingleObjectMixin
-
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -23,17 +21,14 @@ class ArticleDisplay(DetailView):
         context['form'] = CommentForm
         return context
 
-class ArticleComment(SingleObjectMixin, CreateView):
-    form_class = CommentForm
-    template_name = 'article.html'
-    model = Comment
+class CreateCommentView(CreateView):
 
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        return super(ArticleComment, self).post(request, *args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        self.article = get_object_or_404(Article, pk=kwargs['comment_id'])
+        return super(CreateCommentView, self).dispatch(self, request, *args, **kwargs)
 
-    def get_success_url(self):
-        return reverse('article-view', kwargs={'slug': self.object.slug})
+    def get_context_data(self, **kwargs):
+        return super(CreateCommentView, self).get_context_data(article=self.article, **kwargs)
 
 
 class ArticleView(View):
@@ -43,6 +38,6 @@ class ArticleView(View):
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        view = ArticleComment.as_view()
+        view = CreateCommentView.as_view()
         return view(request, *args, **kwargs)
 
