@@ -22,6 +22,7 @@ class ArticleDisplay(DetailView):
 
 class CreateCommentView(CreateView):
     model = Comment
+    template_name = 'article.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.article = get_object_or_404(Article, slug=kwargs['slug'])
