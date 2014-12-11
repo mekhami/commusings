@@ -14,7 +14,7 @@
         <input type="submit" value="Submit" />
     </form>
     <br>
-    {% if article.comments %}
+    {% if article.comment_set %}
         {% for comment in article.comment_set %}
         <p>{{ comment.user }}</p>
             {% if comment.subject %}
