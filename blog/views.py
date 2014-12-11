@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView, View, FormView
 from blog.models import Article, Comment
 from blog.forms import CommentForm
 from django.core.urlresolvers import reverse
