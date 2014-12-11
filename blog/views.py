@@ -19,7 +19,7 @@ class ArticleDisplay(DetailView):
     context_object_name = 'article'
 
     def get_context_data(self, **kwargs):
-        context = super(ArticleView, self).get_context_data(**kwargs)
+        context = super(ArticleDisplay, self).get_context_data(**kwargs)
         context['form'] = CommentForm
         return context
 
