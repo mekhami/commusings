@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, View
 from blog.models import Article, Comment
-from blog.forms import ContactForm
+from blog.forms import CommentForm
 from django.core.urlresolvers import reverse
 
 
@@ -18,11 +18,11 @@ class ArticleDisplay(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleView, self).get_context_data(**kwargs)
-        context['form'] = ContactForm
+        context['form'] = CommentForm
         return context
 
 class ArticleComment(SingleObjectMixin, FormView):
-    form_class = ContactForm
+    form_class = CommentForm
     template_name = 'article.html'
     model = Article
 
