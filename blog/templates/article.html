@@ -16,11 +16,12 @@
     <br>
     {% if article.comment_set %}
         {% for comment in article.comment_set.all %}
-        <p>{{ comment.user }}</p>
+        <p><h3>{{ comment.user }}</h3></p>
             {% if comment.subject %}
-                <p>{{ comment.subject }}</p>
+                <p><b>{{ comment.subject }}</b><br/>
             {% endif %}
-        <p>{{ comment.content }}</p>
+                {{ comment.content }}
+                </p>
         {% endfor %}
     {% else %}
         <p>No Comments</p>
