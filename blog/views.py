@@ -2,7 +2,8 @@ from django.views.generic import ListView, DetailView, View, FormView, CreateVie
 from blog.models import Article, Comment
 from blog.forms import CommentForm
 from django.shortcuts import get_object_or_404
-
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 class IndexView(ListView):
@@ -23,7 +24,7 @@ class ArticleDisplay(DetailView):
 class CreateCommentView(CreateView):
     model = Comment
     template_name = 'article.html'
-    fields = ['user', 'content']
+    form_class = CommentForm
 
     def dispatch(self, request, *args, **kwargs):
         self.article = get_object_or_404(Article, slug=kwargs['slug'])
@@ -31,6 +32,12 @@ class CreateCommentView(CreateView):
 
     def get_context_data(self, **kwargs):
         return super(CreateCommentView, self).get_context_data(article=self.article, **kwargs)
+
+    def form_valid(self, form): # double-check me on the arguments for form_valid
+        instance = form.save(commit=False)
+        instance.article = self.article
+        instance.save()
+        return HttpResponseRedirect(reverse('article-view', kwargs={'slug': instance.article.slug}))
 
 class ArticleView(View):
 
