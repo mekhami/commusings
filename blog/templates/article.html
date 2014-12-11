@@ -15,7 +15,7 @@
     </form>
     <br>
     {% if article.comment_set %}
-        {% for comment in article.comment_set %}
+        {% for comment in article.comment_set.all %}
         <p>{{ comment.user }}</p>
             {% if comment.subject %}
                 <p>{{ comment.subject }}</p>
