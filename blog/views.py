@@ -35,7 +35,7 @@ class ArticleComment(SingleObjectMixin, FormView):
     def get_success_url(self):
         return reverse('article-view', kwargs={'pk': self.object.pk})
 
-class ArticleDetail(View):
+class ArticleView(View):
 
     def get(self, request, *args, **kwargs):
         view = ArticleDisplay.as_view()
