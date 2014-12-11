@@ -24,7 +24,7 @@ class ArticleDisplay(DetailView):
 class CreateCommentView(CreateView):
 
     def dispatch(self, request, *args, **kwargs):
-        self.article = get_object_or_404(Article, slug=self.kwargs.get('slug'))
+        self.article = get_object_or_404(Article, slug=kwargs['slug'])
         return super(CreateCommentView, self).dispatch(self, request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
