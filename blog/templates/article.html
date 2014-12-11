@@ -9,7 +9,7 @@
 
     <h3>Comments</h3>
     <h4>Leave A Comment:</h4>
-    <form action="" method="post">{% csrf_token %}
+    <form action="" method="post" role="form">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit" />
     </form>
