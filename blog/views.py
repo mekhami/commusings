@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView, View
 from blog.models import Article, Comment
 from blog.forms import CommentForm
 from django.core.urlresolvers import reverse
+from django.views.generic.detail import SingleObjectMixin
+
 
 
 # Create your views here.
