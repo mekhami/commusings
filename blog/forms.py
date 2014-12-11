@@ -1,5 +1,6 @@
-from django import forms
+from django.forms import ModelForm
 
-class CommentForm(forms.ModelForm):
-    def metaclass comment
-    fields = user, content
+class CommentForm(ModelForm):
+    class Meta:
+        model = comment
+        fields = ['user', 'content']
