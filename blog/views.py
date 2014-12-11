@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, View, FormView
+from django.views.generic import ListView, DetailView, View, FormView, CreateView
 from blog.models import Article, Comment
 from blog.forms import CommentForm
 from django.core.urlresolvers import reverse
@@ -23,10 +23,10 @@ class ArticleDisplay(DetailView):
         context['form'] = CommentForm
         return context
 
-class ArticleComment(SingleObjectMixin, FormView):
+class ArticleComment(SingleObjectMixin, CreateView):
     form_class = CommentForm
     template_name = 'article.html'
-    model = Article
+    model = Comment
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -34,6 +34,7 @@ class ArticleComment(SingleObjectMixin, FormView):
 
     def get_success_url(self):
         return reverse('article-view', kwargs={'slug': self.object.slug})
+
 
 class ArticleView(View):
 
