@@ -1,7 +1,6 @@
 from django.views.generic import ListView, DetailView, View, FormView, CreateView
 from blog.models import Article, Comment
 from blog.forms import CommentForm
-from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 
 
@@ -22,6 +21,7 @@ class ArticleDisplay(DetailView):
         return context
 
 class CreateCommentView(CreateView):
+    model = Comment
 
     def dispatch(self, request, *args, **kwargs):
         self.article = get_object_or_404(Article, slug=kwargs['slug'])
