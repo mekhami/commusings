@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DJANGO_DEBUG']
+DEBUG = os.environ['DEBUG']
 
 TEMPLATE_DEBUG = True
 
@@ -57,6 +57,8 @@ WSGI_APPLICATION = 'commusings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+DATABASES = {'default': dj_database_url.config()}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -75,5 +77,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-
-DATABASES = {'default': dj_database_url.config()}
