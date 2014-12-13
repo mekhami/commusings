@@ -10,6 +10,7 @@ class IndexView(ListView):
     template_name = 'index.html'
     context_object_name = 'articles'
     queryset = Article.objects.order_by("-pub_date")
+    paginate_by = 7
 
 class ArticleDisplay(DetailView):
     template_name = 'article.html'
