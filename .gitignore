@@ -1,1 +1,4 @@
 *.pyc
+Procfile
+.env
+.idea
