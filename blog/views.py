@@ -41,7 +41,6 @@ class CreateCommentView(CreateView):
         return HttpResponseRedirect(reverse('article-view', kwargs={'slug': instance.article.slug}))
 
 class ArticleView(View):
-
     def get(self, request, *args, **kwargs):
         view = ArticleDisplay.as_view()
         return view(request, *args, **kwargs)
