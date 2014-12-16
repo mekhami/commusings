@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'djrill',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,6 +55,9 @@ ROOT_URLCONF = 'commusings.urls'
 
 WSGI_APPLICATION = 'commusings.wsgi.application'
 
+MANDRILL_API_KEY = os.environ['MANDRILL_API']
+
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
