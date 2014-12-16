@@ -33,7 +33,7 @@ class Comment(models.Model):
 
     def save(self, *args, **kwargs):
         send_mail("New Comment from " + self.user,
-                  "You have a new comment from " + self.user + " on the article: " + self.article + ".",
+                  "You have a new comment from " + self.user + " on the article: " + str(self.article) + ".",
                   "lawrence.vanderpool@gmail.com",
                   "lawrence.vanderpool@gmail.com")
         super(Comment, self).save(*args, **kwargs)
