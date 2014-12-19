@@ -5,7 +5,7 @@
 
     <p><h4>{{ article.pub_date|date }}</h4></p>
 
-    <p>{{ article.content|linebreaks }}</p><br/>
+    <p>{{ article.content|linebreaks|safe }}</p><br/>
 
     <h3>Comments</h3>
     <h4>Leave A Comment:</h4>
