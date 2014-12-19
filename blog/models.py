@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.core.mail import send_mail
 
 # Create your models here.
 class Article(models.Model):
@@ -30,3 +31,9 @@ class Comment(models.Model):
     def __str__(self):
         return self.user + ' ' + self.subject
 
+    def save(self, *args, **kwargs):
+        send_mail("New Comment from " + self.user,
+                  "You have a new comment from " + self.user + " on the article: " + str(self.article) + ".",
+                  "lawrence.vanderpool@gmail.com",
+                  ["lawrence.vanderpool@gmail.com"])
+        super(Comment, self).save(*args, **kwargs)
