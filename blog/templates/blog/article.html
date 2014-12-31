@@ -4,9 +4,9 @@
 {% block content %}
 
     <p><h4>{{ article.pub_date|date }}</h4></p>
-
+{% autoescape off %}
     <p>{{ article.content|linebreaks }}</p><br/>
-
+{% endautoescape %}
     <h3>Comments</h3>
     <h4>Leave A Comment:</h4>
     <form action="" method="post" role="form">{% csrf_token %}
