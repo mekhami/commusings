@@ -10,7 +10,7 @@ class Article(models.Model):
     teaser = models.CharField(max_length=200, default="", null=True)
     slug = models.SlugField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     def save(self, *args, **kwargs):
